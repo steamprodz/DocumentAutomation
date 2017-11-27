@@ -48,80 +48,20 @@
                             <Setter Property="Margin" Value="0,0,0,0"/>
                         </Style>
                     </StackPanel.Resources>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Bottom" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Motor"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Reducer"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Controller"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Enclosure"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Warranty"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
-                    <Grid Height="26">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="329*"/>
-                            <ColumnDefinition Width="328*"/>
-                        </Grid.ColumnDefinitions>
-                        <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" Margin="0,0,10.143,0" CheckBoxText="Color"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="68.857,3,0,0" VerticalAlignment="Top" Width="249" Height="23"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="30.857,1,0,0" VerticalAlignment="Top" Width="23" Background="#FFEFEFEF" BorderThickness="1" BorderBrush="#FFC5C5C5" >
-                            <Image Source="document.png" Margin="0,0,-0.143,0.429"/>
-                        </Border>
-                    </Grid>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Bottom" Width="Auto" CheckBoxText="Motor"/>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" CheckBoxText="Reducer"/>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" CheckBoxText="Controller"/>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" CheckBoxText="Enclosure"/>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" CheckBoxText="Warranty"/>
+                    <local:LabeledComboBox Height="23" VerticalAlignment="Top" Width="Auto" CheckBoxText="Color"/>
                 </StackPanel>
                 <Border HorizontalAlignment="Left" Margin="0,4.143,0,25.286" Width="657" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="2">
-                    <WrapPanel Margin="8.857,8.857,8.429,9.143">
+                    <WrapPanel x:Name="WrapPanel_FileBrowser" Margin="8.857,8.857,8.429,9.143">
                         <local:DocumentControl Height="80" Width="80" Style="{DynamicResource DocumentControlStyle}" FilenameText="Holla amigos, this is my pdf filename.pdf"/>
                     </WrapPanel>
                 </Border>
-                <Button Content="Add" HorizontalAlignment="Left" Margin="0,199.143,0,0.286" Grid.Row="1" Width="75"/>
-                <Button Content="Delete" HorizontalAlignment="Left" Margin="118,199.143,0,0.286" Grid.Row="1" Width="82"/>
+                <Button x:Name="Button_Add" Content="Add" HorizontalAlignment="Left" Margin="0,199.143,0,0.286" Grid.Row="1" Width="75" Click="Button_Add_Click"/>
+                <Button x:Name="Button_Delete" Content="Delete" HorizontalAlignment="Left" Margin="118,199.143,0,0.286" Grid.Row="1" Width="82" Click="Button_Delete_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Unit drawing" HorizontalAlignment="Left" Height="151" Margin="813,433,0,0" VerticalAlignment="Top" Width="269">

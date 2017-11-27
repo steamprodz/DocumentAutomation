@@ -38,10 +38,28 @@ namespace WpfAppTest
             var documentControl = (DocumentControl)d;
             documentControl.TextBox_Filename.Text = e.NewValue.ToString();
         }
-        
+
         #endregion
 
-        public bool IsSelected { get; set; }
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+
+                if (value)
+                    this.GridBackground.Background = Brushes.Blue;
+                else
+                    this.GridBackground.Background = Brushes.Transparent;
+            }
+        }
+
+        public string FilePath { get; set; }
 
         public DocumentControl()
         {
@@ -63,7 +81,6 @@ namespace WpfAppTest
         private void GridBackground_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.IsSelected = true;
-            this.GridBackground.Background = Brushes.Blue;
         }
     }
 }

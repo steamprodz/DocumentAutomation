@@ -4,14 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppTest"
-             mc:Ignorable="d" Height="26" MinHeight="26" MaxHeight="26.1" RenderTransformOrigin="0.5,0.5" Width="258.292">
+             mc:Ignorable="d" Height="26" MinHeight="26" MaxHeight="26.1" RenderTransformOrigin="0.5,0.5" Width="419.625">
     <Grid Height="26" Margin="0,0,-0.429,0.286">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="83*"/>
-            <ColumnDefinition Width="176*"/>
+            <ColumnDefinition Width="74*"/>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="150*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="ComboBox" Margin="1.143,2,-0.143,0" Grid.Column="1"/>
-        <CheckBox x:Name="CheckBox" Content="CheckBox" Margin="3,6,3.857,0" VerticalAlignment="Top" Height="15"/>
+        <ComboBox x:Name="ComboBox_PartName" Margin="1,2,0,0" Grid.Column="1"/>
+        <CheckBox x:Name="CheckBox" Content="CheckBox" Margin="3,6,4,0" VerticalAlignment="Top" Height="15" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <Border Grid.Column="2" Height="26" Margin="0,0,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="26" BorderThickness="1" Background="#FFD4D2D2" BorderBrush="#FF2B2B2B" >
+            <Image Source="document.png" Width="18" Height="18"/>
+        </Border>
+        <ComboBox x:Name="ComboBox_AssociatedDocuments" Margin="0,2,0,0" Grid.Column="3"/>
 
     </Grid>
 </UserControl>
