@@ -64,6 +64,7 @@ namespace WpfAppTest
         public DocumentControl()
         {
             InitializeComponent();
+            this.FilePath = "No File";
         }
 
         private void GridBackground_MouseMove(object sender, MouseEventArgs e)
@@ -81,6 +82,34 @@ namespace WpfAppTest
         private void GridBackground_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.IsSelected = true;
+        }
+
+        private void UserControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Package the data.
+                DataObject data = new DataObject();
+                data.SetData(DataFormats.StringFormat, this.FilePath.ToString());
+                data.SetData("Object", this);
+
+                // Inititate the drag-and-drop operation.
+                DragDrop.DoDragDrop(this, data, DragDropEffects.Move);
+            }
+        }
+
+        private void UserControl_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            var docDragControl = new DocumentControl();
+            docDragControl.FilenameText = this.FilenameText;
+            docDragControl.FilePath = this.FilePath;
+            docDragControl.Width = this.Width;
+            docDragControl.Height = this.Height;
+
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.Grid_Main.Children.Add(docDragControl);
+            
+            docDragControl.Margin = new Thickness()
         }
     }
 }

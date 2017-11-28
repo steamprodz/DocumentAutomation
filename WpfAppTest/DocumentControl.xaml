@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppTest"
-             mc:Ignorable="d" Width="80" Height="80">
+             mc:Ignorable="d" Width="80" Height="80" MouseMove="UserControl_MouseMove" GiveFeedback="UserControl_GiveFeedback">
     <Grid x:Name="GridBackground" Margin="4" MouseMove="GridBackground_MouseMove" MouseLeave="GridBackground_MouseLeave" MouseDown="GridBackground_MouseDown">
         <Image Height="32" Margin="15,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="32" Source="document.png">
             <Image.OpacityMask>

@@ -19,7 +19,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="Grid_Main">
         <GroupBox Header="Customer" HorizontalAlignment="Left" Height="423" Margin="10,10,0,0" VerticalAlignment="Top" Width="379">
             <Grid Margin="10,10,8,1">
                 <StackPanel Orientation="Vertical">
