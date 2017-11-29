@@ -49,8 +49,19 @@ namespace WpfAppTest.UserControls
 
             this.ComboBox_PartName.IsEnabled = false;
             this.ComboBox_AssociatedDocuments.IsEnabled = false;
+
+            SetTextAsCount();
         }
 
+        private void SetTextAsCount()
+        {
+            //var countLabel = (Label)LogicalTreeHelper.FindLogicalNode(this.ComboBox_AssociatedDocuments, "Label");
+            var template = ComboBox_AssociatedDocuments.Template;
+            var countLabel = (Label)template.FindName("Label", ComboBox_AssociatedDocuments);
+
+            if (countLabel != null)
+                countLabel.Content = "Documents count: " + this.ComboBox_AssociatedDocuments.Items.Count;
+        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -75,9 +86,11 @@ namespace WpfAppTest.UserControls
                 this.ComboBox_AssociatedDocuments.Items.Add(comboItem);
                 this.Filepaths.Add(this.ComboBox_AssociatedDocuments.Items.Count - 1, e.Data.GetData("Filepath").ToString());
 
-                // Select item if only one presented
-                if (this.ComboBox_AssociatedDocuments.Items.Count == 1)
-                    this.ComboBox_AssociatedDocuments.SelectedItem = comboItem;
+                //// Select item if only one presented
+                //if (this.ComboBox_AssociatedDocuments.Items.Count == 1)
+                //    this.ComboBox_AssociatedDocuments.SelectedItem = comboItem;
+
+                SetTextAsCount();
             }
         }
 
@@ -94,6 +107,8 @@ namespace WpfAppTest.UserControls
 
             this.Filepaths.Remove(this.ComboBox_AssociatedDocuments.Items.IndexOf(comboItem));
             this.ComboBox_AssociatedDocuments.Items.Remove(comboItem);
+
+            SetTextAsCount();
         }
     }
 }
