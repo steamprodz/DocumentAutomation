@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppTest.Database;
 
 namespace WpfAppTest
 {
@@ -26,6 +29,10 @@ namespace WpfAppTest
 
         public MainWindow()
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-us");
+
             InitializeComponent();
         }
 
@@ -73,6 +80,35 @@ namespace WpfAppTest
             for (int i = count - 1; i >= 0; i--)
             {
                 this.WrapPanel_FileBrowser.Children.Remove(documentControls.ElementAt(i));
+            }
+        }
+
+        private void button_LoadFromDB_Click(object sender, RoutedEventArgs e)
+        {
+            string employeeId = this.LabeledTextBox_CustomerId.TextBox.Text;
+
+            using (var context = new M1_FM_DEV_DataEntities())
+            {
+                var employee = context.Employees.Where(x => x.lmeEmployeeID == employeeId).FirstOrDefault();
+
+                if (employee != null)
+                {
+                    this.labeledTextBox_FirstName.TextBoxText = employee.lmeEmployeeName;
+
+                    // Enable controls
+                    this.labeledTextBox_FirstName.IsEnabled = true;
+                    this.labeledTextBox_SecondName.IsEnabled = true;
+                    this.labeledTextBox_BankAccount.IsEnabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Customer not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    // Disable controls
+                    this.labeledTextBox_FirstName.IsEnabled = false;
+                    this.labeledTextBox_SecondName.IsEnabled = false;
+                    this.labeledTextBox_BankAccount.IsEnabled = false;
+                }
             }
         }
     }

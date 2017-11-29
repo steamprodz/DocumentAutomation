@@ -28,12 +28,12 @@
                             <Setter Property="Margin" Value="0,0,0,0"/>
                         </Style>
                     </StackPanel.Resources>
-                    <local:LabeledTextBox Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Customer Id" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
-                    <local:LabeledTextBox Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="First Name" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
-                    <local:LabeledTextBox Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Second Name" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
-                    <local:LabeledTextBox Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Bank Account" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
+                    <local:LabeledTextBox x:Name="LabeledTextBox_CustomerId" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Customer Id" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
+                    <local:LabeledTextBox x:Name="labeledTextBox_FirstName" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="First Name" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
+                    <local:LabeledTextBox x:Name="labeledTextBox_SecondName" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Second Name" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
+                    <local:LabeledTextBox x:Name="labeledTextBox_BankAccount" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Bank Account" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
                 </StackPanel>
-                <Button x:Name="button_LoadFromDB" Content="Load from DB" Margin="10,357,234,0" Height="22" VerticalAlignment="Top"/>
+                <Button x:Name="button_LoadFromDB" Content="Load from DB" Margin="10,357,234,0" Height="22" VerticalAlignment="Top" Click="button_LoadFromDB_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Unit" HorizontalAlignment="Left" Height="423" Margin="394,10,0,0" VerticalAlignment="Top" Width="686">
