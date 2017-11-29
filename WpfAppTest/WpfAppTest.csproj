@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -78,56 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Database\DEV_M1_FM_DEV.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Employees.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\JobAssemblies.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\JobMaterials.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\JobOperations.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Jobs.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\OrganizationContacts.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\OrganizationLocations.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Organizations.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\PartClasses.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\PartRevisions.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Parts.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\SalesOrderJobLinks.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\SalesOrderLines.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\SalesOrders.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\SalesOrderSalesPeople.cs">
-      <DependentUpon>DEV_M1_FM_DEV.tt</DependentUpon>
-    </Compile>
     <Page Include="UserControls\DocumentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,15 +98,66 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Database\DEV_M1_FM_DEV.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DEV_M1_FM_DEV.Context.tt</DependentUpon>
+    <Compile Include="Employees.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\DEV_M1_FM_DEV.Designer.cs">
+    <Compile Include="JobAssemblies.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobMaterials.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobOperations.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M1_FM_DEV_DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DEV_M1_FM_DEV.edmx</DependentUpon>
+      <DependentUpon>M1_FM_DEV_DataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M1_FM_DEV_DataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M1_FM_DEV_DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MouseHelper.cs" />
+    <Compile Include="OrganizationContacts.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationLocations.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Organizations.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartClasses.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartRevisions.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parts.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderJobLinks.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderLines.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrders.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderSalesPeople.cs">
+      <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DocumentControl.xaml.cs">
       <DependentUpon>DocumentControl.xaml</DependentUpon>
@@ -190,30 +191,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Database\DEV_M1_FM_DEV.edmx">
+    <None Include="Database_bak\2017-09-18_DEV_M1_FM_DEV.bak" />
+    <EntityDeploy Include="M1_FM_DEV_DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DEV_M1_FM_DEV.Designer.cs</LastGenOutput>
+      <LastGenOutput>M1_FM_DEV_DataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Database\2017-09-18_DEV_M1_FM_DEV.bak" />
-    <None Include="Database\DEV_M1_FM_DEV.edmx.diagram">
-      <DependentUpon>DEV_M1_FM_DEV.edmx</DependentUpon>
+    <None Include="M1_FM_DEV_DataModel.edmx.diagram">
+      <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\Employees.datasource" />
-    <None Include="Properties\DataSources\JobAssemblies.datasource" />
-    <None Include="Properties\DataSources\JobMaterials.datasource" />
-    <None Include="Properties\DataSources\JobOperations.datasource" />
-    <None Include="Properties\DataSources\Jobs.datasource" />
-    <None Include="Properties\DataSources\OrganizationContacts.datasource" />
-    <None Include="Properties\DataSources\OrganizationLocations.datasource" />
-    <None Include="Properties\DataSources\Organizations.datasource" />
-    <None Include="Properties\DataSources\PartClasses.datasource" />
-    <None Include="Properties\DataSources\PartRevisions.datasource" />
-    <None Include="Properties\DataSources\Parts.datasource" />
-    <None Include="Properties\DataSources\SalesOrderJobLinks.datasource" />
-    <None Include="Properties\DataSources\SalesOrderLines.datasource" />
-    <None Include="Properties\DataSources\SalesOrders.datasource" />
-    <None Include="Properties\DataSources\SalesOrderSalesPeople.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -226,21 +212,23 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\M1_FM_DEV_Data.mdf">
+    <Resource Include="Icons\garbage.png" />
+    <Content Include="M1_FM_DEV_Data.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database\M1_FM_DEV_Log.ldf">
+    <Content Include="M1_FM_DEV_DataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
+      <LastGenOutput>M1_FM_DEV_DataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="M1_FM_DEV_DataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
+      <LastGenOutput>M1_FM_DEV_DataModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="M1_FM_DEV_Data_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\DEV_M1_FM_DEV.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DEV_M1_FM_DEV.edmx</DependentUpon>
-      <LastGenOutput>DEV_M1_FM_DEV.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\DEV_M1_FM_DEV.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DEV_M1_FM_DEV.edmx</DependentUpon>
-      <LastGenOutput>DEV_M1_FM_DEV.cs</LastGenOutput>
+      <DependentUpon>M1_FM_DEV_Data.mdf</DependentUpon>
     </Content>
     <Resource Include="Icons\document.png" />
   </ItemGroup>

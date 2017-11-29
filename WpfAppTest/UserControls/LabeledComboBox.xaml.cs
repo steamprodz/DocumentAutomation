@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfAppTest
+namespace WpfAppTest.UserControls
 {
     /// <summary>
     /// Interaction logic for LabeledTextBox.xaml
@@ -73,6 +73,21 @@ namespace WpfAppTest
         {
             this.ComboBox_PartName.IsEnabled = false;
             this.ComboBox_AssociatedDocuments.IsEnabled = false;
+        }
+
+        private void ComboBox_AssociatedDocuments_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                var comboItem = new ComboBoxItem();
+                comboItem.Content = e.Data.GetData(DataFormats.StringFormat);
+
+                this.ComboBox_AssociatedDocuments.Items.Add(comboItem);
+
+                // Select item if only one presented
+                if (this.ComboBox_AssociatedDocuments.Items.Count == 1)
+                    this.ComboBox_AssociatedDocuments.SelectedItem = comboItem;
+            }
         }
     }
 }

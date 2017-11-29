@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfAppTest
+namespace WpfAppTest.UserControls
 {
     /// <summary>
     /// Interaction logic for LabeledTextBox.xaml
