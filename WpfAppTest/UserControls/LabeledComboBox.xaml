@@ -39,16 +39,64 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                            <Grid Height="16" Margin="0,0,0,0" HorizontalAlignment="Left" Width="138">
+                            <Grid Height="16">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="123*"/>
-                                    <ColumnDefinition Width="16*"/>
+                                    <ColumnDefinition Width="41*"/>
+                                    <ColumnDefinition Width="16" MaxWidth="16"/>
                                 </Grid.ColumnDefinitions>
-                                <ContentPresenter HorizontalAlignment="Left" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.ColumnSpan="1" Width="82" Height="16"/>
-                                <Button Grid.Column="1" HorizontalAlignment="Stretch" Margin="1,0,-1,0" VerticalAlignment="Top" Width="Auto" Height="16" BorderThickness="0" Background="White">
-                                    <Button.Foreground>
-                                        <ImageBrush ImageSource="/WpfAppTest;component/Icons/garbage.png" Stretch="Uniform"/>
-                                    </Button.Foreground>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="16" Width="82"/>
+                                <Button x:Name="button_Delete" Grid.Column="2" BorderThickness="0" Background="Transparent" Style="{DynamicResource ButtonStyle}" ToolTip="Delete" Click="button_Delete_Click">
+                                    <Button.Resources>
+                                        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+                                        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+                                        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Beige"/>
+                                        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="Brown"/>
+                                        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+                                        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+                                        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+                                        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+                                        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+                                        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+                                            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                                            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                                            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            <Setter Property="Padding" Value="1"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsDefaulted" Value="true">
+                                                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Resources>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/WpfAppTest;component/Icons/garbage.png" Stretch="Uniform"/>
+                                    </StackPanel>
                                 </Button>
                             </Grid>
                         </Border>
@@ -56,6 +104,9 @@
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
                             </Trigger>
+                            <!--<EventTrigger RoutedEvent="">
+                                
+                            </EventTrigger>-->
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="False"/>
@@ -114,6 +165,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+
     <Grid Height="26" Margin="0,0,-0.429,0.286">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="74*"/>
@@ -127,7 +179,7 @@
             <Image Width="18" Height="18" Source="/WpfAppTest;component/Icons/document.png"/>
         </Border>
         <ComboBox x:Name="ComboBox_AssociatedDocuments" Margin="0,2,0,0" Grid.Column="3" AllowDrop="True" Drop="ComboBox_AssociatedDocuments_Drop">
-            <ComboBoxItem Content="ComboBoxItem" HorizontalAlignment="Left" Width="148" Style="{DynamicResource ComboBoxItemStyle}"/>
+            <ComboBoxItem Content="ComboBoxItem" Style="{DynamicResource ComboBoxItemStyle}"/>
         </ComboBox>
 
     </Grid>

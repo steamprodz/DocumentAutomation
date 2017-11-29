@@ -113,7 +113,7 @@ namespace WpfAppTest.UserControls
                 // Package the data.
                 DataObject data = new DataObject();
                 data.SetData(DataFormats.StringFormat, this.FilenameText.ToString());
-                data.SetData("Object", this);
+                data.SetData("Filepath", this.FilePath);
 
                 // Inititate the drag-and-drop operation.
                 DragDrop.DoDragDrop(this, data, DragDropEffects.Move);

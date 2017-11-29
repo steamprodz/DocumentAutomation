@@ -37,31 +37,20 @@ namespace WpfAppTest.UserControls
             var labeledComboBox = (LabeledComboBox)d;
             labeledComboBox.CheckBox.Content = e.NewValue;
         }
-
-        [Category("MyApp")]
-        public String ComboBoxText
-        {
-            get { return (String)GetValue(LabelTextProperty); }
-            set { SetValue(LabelTextProperty, value); }
-        }
-
-        public static readonly DependencyProperty TextBoxTextProperty =
-            DependencyProperty.Register("ComboBoxText", typeof(String), typeof(LabeledComboBox), new PropertyMetadata("ComboText", ComboBoxTextChanged));
-
-        private static void ComboBoxTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var labeledComboBox = (LabeledComboBox)d;
-            labeledComboBox.ComboBox_PartName.Text = e.NewValue.ToString();
-        }
         #endregion
+
+        public Dictionary<int, String> Filepaths { get; private set; }
 
         public LabeledComboBox()
         {
             InitializeComponent();
 
+            this.Filepaths = new Dictionary<int, string>();
+
             this.ComboBox_PartName.IsEnabled = false;
             this.ComboBox_AssociatedDocuments.IsEnabled = false;
         }
+
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -81,13 +70,30 @@ namespace WpfAppTest.UserControls
             {
                 var comboItem = new ComboBoxItem();
                 comboItem.Content = e.Data.GetData(DataFormats.StringFormat);
+                comboItem.Style = this.Resources["ComboBoxItemStyle"] as Style;
 
                 this.ComboBox_AssociatedDocuments.Items.Add(comboItem);
+                this.Filepaths.Add(this.ComboBox_AssociatedDocuments.Items.Count - 1, e.Data.GetData("Filepath").ToString());
 
                 // Select item if only one presented
                 if (this.ComboBox_AssociatedDocuments.Items.Count == 1)
                     this.ComboBox_AssociatedDocuments.SelectedItem = comboItem;
             }
+        }
+
+        private void button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DependencyObject dependencyObject = (DependencyObject)sender;
+
+            while (!(dependencyObject is ComboBoxItem))
+            {
+                dependencyObject = VisualTreeHelper.GetParent(dependencyObject);
+            }
+
+            var comboItem = (ComboBoxItem)dependencyObject;
+
+            this.Filepaths.Remove(this.ComboBox_AssociatedDocuments.Items.IndexOf(comboItem));
+            this.ComboBox_AssociatedDocuments.Items.Remove(comboItem);
         }
     }
 }

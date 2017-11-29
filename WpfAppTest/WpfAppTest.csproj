@@ -213,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\garbage.png" />
+    <Resource Include="Icons\no_image.png" />
     <Content Include="M1_FM_DEV_Data.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
