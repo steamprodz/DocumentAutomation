@@ -61,7 +61,7 @@
                 <Border Margin="0,0,-0.286,4" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="2">
                     <WrapPanel x:Name="WrapPanel_FileBrowser" Margin="8.857,8.857,8.429,9.143">
 
-                        <UserControls:DocumentControl Height="80" Width="80" Style="{DynamicResource DocumentControlStyle}"/>
+                        <UserControls:DocumentControl Height="80" Width="80" Style="{DynamicResource DocumentControlStyle}" FilenameText="Component - Motor.pdf"/>
 
                     </WrapPanel>
                 </Border>
