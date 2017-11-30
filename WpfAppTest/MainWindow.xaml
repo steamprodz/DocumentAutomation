@@ -22,7 +22,7 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="Grid_Main">
-        <GroupBox Header="Customer" HorizontalAlignment="Left" Height="270" Margin="10,10,0,0" VerticalAlignment="Top" Width="338">
+        <GroupBox Header="Customer" Margin="10,10,668,457">
             <Grid Margin="10,10,8,1">
                 <StackPanel Orientation="Vertical">
                     <StackPanel.Resources>
@@ -61,7 +61,7 @@
                 <Border Margin="0,0,-0.286,4" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" CornerRadius="2">
                     <WrapPanel x:Name="WrapPanel_FileBrowser" Margin="8.857,8.857,8.429,9.143">
 
-                        <UserControls:DocumentControl Height="80" Width="80" Style="{DynamicResource DocumentControlStyle}"/>
+                        <UserControls:DocumentControl Style="{DynamicResource DocumentControlStyle}"/>
 
                     </WrapPanel>
                 </Border>
@@ -69,7 +69,7 @@
                 <Button x:Name="Button_Delete" Content="Delete" HorizontalAlignment="Left" Margin="118,0,0,0" Grid.Row="2" Width="82" Click="Button_Delete_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Unit drawing" HorizontalAlignment="Left" Height="251" Margin="10,285,0,0" VerticalAlignment="Top" Width="338">
+        <GroupBox Header="Unit drawing" Margin="10,285,668,201">
             <Grid Margin="0,10,-1,-3">
                 <Border HorizontalAlignment="Left" Height="202" Margin="115,10,0,0" VerticalAlignment="Top" Width="202" BorderThickness="1" BorderBrush="Black" >
                     <Image Source="Icons/no_image.png" Width="128" Height="128" HorizontalAlignment="Center" VerticalAlignment="Center"/>

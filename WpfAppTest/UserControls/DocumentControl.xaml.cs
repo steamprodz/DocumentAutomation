@@ -42,6 +42,13 @@ namespace WpfAppTest.UserControls
         #endregion
 
         private bool _isSelected;
+
+        private MainWindow mainWindow;
+        private DocumentControl dragControl;
+        private Canvas canvas;
+        private Point mouseDownPos;
+
+        public string FilePath { get; set; }
         public bool IsSelected
         {
             get
@@ -53,15 +60,14 @@ namespace WpfAppTest.UserControls
                 _isSelected = value;
 
                 if (value)
+                {
                     this.GridBackground.Background = Brushes.Blue;
+                    this.GridBackground.Opacity = 0.5;
+                }
                 else
                     this.GridBackground.Background = Brushes.Transparent;
             }
         }
-
-        public string FilePath { get; set; }
-
-        private MainWindow mainWindow;
 
         public DocumentControl()
         {
@@ -69,10 +75,6 @@ namespace WpfAppTest.UserControls
 
             this.FilePath = "No File";
         }
-
-        private DocumentControl docDragControl;
-        private Canvas canvas;
-        private Point mouseDownPos;
 
         private void CopyControl()
         {
@@ -82,23 +84,23 @@ namespace WpfAppTest.UserControls
             canvas.Height = mainWindow.Grid_Main.ActualHeight;
             canvas.Margin = new Thickness(0, 0, 0, 0);
 
-            docDragControl = new DocumentControl();
-            docDragControl.FilenameText = this.FilenameText;
-            docDragControl.FilePath = this.FilePath;
-            docDragControl.Width = this.Width;
-            docDragControl.Height = this.Height;
-            docDragControl.Opacity = 0.7;
-            docDragControl.AllowDrop = false;
-            docDragControl.IsHitTestVisible = false;
+            dragControl = new DocumentControl();
+            dragControl.FilenameText = this.FilenameText;
+            dragControl.FilePath = this.FilePath;
+            dragControl.Width = this.Width;
+            dragControl.Height = this.Height;
+            dragControl.Opacity = 0.7;
+            dragControl.AllowDrop = false;
+            dragControl.IsHitTestVisible = false;
             
 
             //mainWindow.Grid_Main.Children.Add(docDragControl);
-            canvas.Children.Add(docDragControl);
-        }
+            canvas.Children.Add(dragControl);
 
-        protected override void OnDrop(DragEventArgs e)
-        {
-            base.OnDrop(e);
+            Point relativePoint = this.TransformToAncestor(mainWindow).Transform(new Point(0, 0));
+
+            Canvas.SetTop(dragControl, relativePoint.Y);
+            Canvas.SetLeft(dragControl, relativePoint.X);
         }
 
         //private Point mousePosWindow;
@@ -108,7 +110,7 @@ namespace WpfAppTest.UserControls
             if (!this.IsSelected)
                 this.GridBackground.Background = Brushes.LightBlue;
 
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (dragControl != null && e.LeftButton == MouseButtonState.Pressed)
             {
                 // Package the data.
                 DataObject data = new DataObject();
@@ -130,17 +132,20 @@ namespace WpfAppTest.UserControls
 
         private void UserControl_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
-            var mousePosScreen = MouseHelper.GetMousePosition(); //mainWindow.MousePosition;
-            mainWindow.textBox_CustomQuestion.Text = mousePosScreen.X + "; " + mousePosScreen.Y;
-            //var mousePosDoc = Mouse.GetPosition(this);
-            //var mousePosScreen = this.PointToScreen(mousePosWindow);
-            var topLeft = mainWindow.PointFromScreen(new Point(mousePosScreen.X - mouseDownPos.X, mousePosScreen.Y - mouseDownPos.Y));
-            var botRight = mainWindow.PointFromScreen(new Point(mousePosScreen.X - mouseDownPos.X + docDragControl.Width, mousePosScreen.Y - mouseDownPos.Y + docDragControl.Height));
-            //docDragControl.Margin = new Thickness(mousePosWindow.X - mousePosDoc.X, mousePosWindow.Y - mousePosDoc.Y, gridMain.ActualWidth, 100);
-            //docDragControl.Margin = new Thickness(topLeft.X, topLeft.Y, mainWindow.ActualWidth - botRight.X, mainWindow.ActualHeight - botRight.Y);
-            //canvas.SetTop(docDragControl, topLeft.Y);
-            Canvas.SetLeft(docDragControl, topLeft.X);
-            Canvas.SetTop(docDragControl, topLeft.Y);
+            if (dragControl != null)
+            {
+                var mousePosScreen = MouseHelper.GetMousePosition(); //mainWindow.MousePosition;
+                mainWindow.textBox_CustomQuestion.Text = mousePosScreen.X + "; " + mousePosScreen.Y;
+                //var mousePosDoc = Mouse.GetPosition(this);
+                //var mousePosScreen = this.PointToScreen(mousePosWindow);
+                var topLeft = mainWindow.PointFromScreen(new Point(mousePosScreen.X - mouseDownPos.X, mousePosScreen.Y - mouseDownPos.Y));
+                var botRight = mainWindow.PointFromScreen(new Point(mousePosScreen.X - mouseDownPos.X + dragControl.Width, mousePosScreen.Y - mouseDownPos.Y + dragControl.Height));
+                //docDragControl.Margin = new Thickness(mousePosWindow.X - mousePosDoc.X, mousePosWindow.Y - mousePosDoc.Y, gridMain.ActualWidth, 100);
+                //docDragControl.Margin = new Thickness(topLeft.X, topLeft.Y, mainWindow.ActualWidth - botRight.X, mainWindow.ActualHeight - botRight.Y);
+                //canvas.SetTop(docDragControl, topLeft.Y);
+                Canvas.SetLeft(dragControl, topLeft.X);
+                Canvas.SetTop(dragControl, topLeft.Y);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -150,14 +155,17 @@ namespace WpfAppTest.UserControls
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.IsSelected = true;
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.IsSelected = true;
 
-            CopyControl();
-            mouseDownPos = e.GetPosition(this);
+                CopyControl();
+                mouseDownPos = e.GetPosition(this);
 
-            var mousePosScreen = canvas.PointFromScreen(MouseHelper.GetMousePosition());
-            Canvas.SetTop(docDragControl, mousePosScreen.X - mouseDownPos.X);
-            Canvas.SetLeft(docDragControl, mousePosScreen.Y - mouseDownPos.Y);
+                //var mousePosScreen = canvas.PointFromScreen(MouseHelper.GetMousePosition());
+                //Canvas.SetTop(docDragControl, mousePosScreen.X - mouseDownPos.X);
+                //Canvas.SetLeft(docDragControl, mousePosScreen.Y - mouseDownPos.Y);
+            }
         }
 
         private void UserControl_MouseLeave(object sender, MouseEventArgs e)
@@ -169,34 +177,17 @@ namespace WpfAppTest.UserControls
         // Fired from MouseMove when DoDragDrop returns result
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (docDragControl != null)
+            if (e.LeftButton == MouseButtonState.Released)
             {
-                canvas.Children.Remove(docDragControl);
-                mainWindow.Grid_Main.Children.Remove(canvas);
+                if (dragControl != null)
+                {
+                    canvas.Children.Remove(dragControl);
+                    mainWindow.Grid_Main.Children.Remove(canvas);
 
-                docDragControl = null;
-                canvas = null;
+                    dragControl = null;
+                    canvas = null;
+                }
             }
-        }
-
-        private void UserControl_Drop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void UserControl_DragEnter(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void UserControl_DragLeave(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void UserControl_DragOver(object sender, DragEventArgs e)
-        {
-
         }
     }
 }
