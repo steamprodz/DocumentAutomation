@@ -61,11 +61,16 @@ namespace WpfAppTest.UserControls
 
                 if (value)
                 {
-                    this.GridBackground.Background = Brushes.Blue;
-                    this.GridBackground.Opacity = 0.5;
+                    this.GridBackground.Background = ColorHelper.BrushFromHEX("#5e9bff");
+                    //this.GridBackground.Opacity = 0.5;
+                    this.border.BorderBrush = Brushes.Blue;
                 }
                 else
+                {
                     this.GridBackground.Background = Brushes.Transparent;
+                    //this.GridBackground.Opacity = 1;
+                    this.border.BorderBrush = Brushes.Transparent;
+                }
             }
         }
 
@@ -108,7 +113,7 @@ namespace WpfAppTest.UserControls
         private void UserControl_MouseMove(object sender, MouseEventArgs e)
         {
             if (!this.IsSelected)
-                this.GridBackground.Background = Brushes.LightBlue;
+                this.GridBackground.Background = ColorHelper.BrushFromHEX("#AFC7EF");
 
             if (dragControl != null && e.LeftButton == MouseButtonState.Pressed)
             {

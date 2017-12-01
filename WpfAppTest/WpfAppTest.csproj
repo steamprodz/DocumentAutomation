@@ -99,6 +99,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ColorHelper.cs" />
     <Compile Include="Employees.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
