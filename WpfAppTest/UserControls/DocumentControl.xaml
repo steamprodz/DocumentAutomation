@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppTest"
-             mc:Ignorable="d" Width="80" Height="80" MouseDown="UserControl_MouseDown" MouseLeave="UserControl_MouseLeave" MouseMove="UserControl_MouseMove" MouseUp="UserControl_MouseUp" Loaded="UserControl_Loaded" GiveFeedback="UserControl_GiveFeedback" Drop="UserControl_Drop" DragEnter="UserControl_DragEnter" DragLeave="UserControl_DragLeave" DragOver="UserControl_DragOver">
-    <Grid x:Name="GridBackground" Margin="4">
-        <Image Height="32" Margin="15,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="32" Source="/WpfAppTest;component/Icons/document.png"/>
-        <TextBlock x:Name="TextBox_Filename" Margin="3,37,4,0" TextWrapping="Wrap" Text="TextBox Filename" VerticalAlignment="Top" Height="35" TextAlignment="Center" FontFamily="Segoe UI Semilight" FontSize="10"/>
-    </Grid>
+             mc:Ignorable="d" Width="80" Height="100" MouseDown="UserControl_MouseDown" MouseLeave="UserControl_MouseLeave" MouseMove="UserControl_MouseMove" MouseUp="UserControl_MouseUp" Loaded="UserControl_Loaded" GiveFeedback="UserControl_GiveFeedback">
+    <Border x:Name="border" Margin="4" BorderThickness="1">
+        <Grid x:Name="GridBackground">
+            <Image Height="32" Margin="20,10,20,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="32" Source="/WpfAppTest;component/Icons/document.png"/>
+            <TextBlock x:Name="TextBox_Filename" Margin="3,47,4,0" TextWrapping="Wrap" Text="TextBox Filename" VerticalAlignment="Top" Height="41" TextAlignment="Center" FontFamily="Segoe UI Semilight" FontSize="10"/>
+        </Grid>
+    </Border>
 </UserControl>
