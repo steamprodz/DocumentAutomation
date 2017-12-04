@@ -1,0 +1,8 @@
+Table: Tahoma 9
+Checkmark: Adobe Pi Std 20
+Description: Tahoma 12 semibold
+
+Table of contents - description - top: Tahoma 11
+Table of contents: Tahoma 10
+
+Order, Serial, Customer: Tahoma 12 Semibold

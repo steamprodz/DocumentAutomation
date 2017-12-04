@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfAppTest.UserControls;
+using WpfAppTest.Helpers;
 
 namespace WpfAppTest
 {
@@ -208,6 +209,16 @@ namespace WpfAppTest
         }
 
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void DocumentControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.textBox_CustomQuestion.Text = (sender as DocumentControl).TextBox_Filename.GetLines().ToString();
+        }
+
+        private void button_BrowseDir_Click(object sender, RoutedEventArgs e)
         {
 
         }

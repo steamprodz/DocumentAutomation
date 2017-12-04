@@ -8,7 +8,8 @@
     <Border x:Name="border" Margin="4" BorderThickness="1">
         <Grid x:Name="GridBackground">
             <Image Height="32" Margin="20,10,20,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="32" Source="/WpfAppTest;component/Icons/document.png"/>
-            <TextBlock x:Name="TextBox_Filename" Margin="3,47,4,0" TextWrapping="Wrap" Text="TextBox Filename" VerticalAlignment="Top" Height="41" TextAlignment="Center" FontFamily="Segoe UI Semilight" FontSize="10"/>
+            <!--<TextBox x:Name="TextBox_Filename" IsReadOnly="True" IsEnabled="False" Margin="3,47,4,0" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="TextBox Filename" VerticalAlignment="Top" Height="41" TextAlignment="Center" FontFamily="Segoe UI Semilight" FontSize="10" AllowDrop="False"/>-->
+            <TextBlock x:Name="TextBox_Filename" Margin="3,47,3.714,2.286" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Text="TextBox Filename" TextAlignment="Center" FontFamily="Segoe UI Semilight" FontSize="10"/>
         </Grid>
     </Border>
 </UserControl>

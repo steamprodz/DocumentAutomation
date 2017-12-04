@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppTest.Helpers;
 
 namespace WpfAppTest.UserControls
 {
@@ -37,11 +38,23 @@ namespace WpfAppTest.UserControls
         {
             var documentControl = (DocumentControl)d;
             documentControl.TextBox_Filename.Text = e.NewValue.ToString();
+
+            //var textLines = documentControl.TextBox_Filename.GetLines().ToArray();
+            //if (textLines.Length > 3)
+            //{
+            //    var lastLine = textLines[textLines.Length - 1];
+            //    var line3 = "..." + (lastLine.Length > 3 ? lastLine.Substring(3) : lastLine);
+            //    var lines = textLines[0] + textLines[1] + line3;
+
+            //    documentControl.TextBox_Filename.Text = lines;
+            //}
         }
 
         #endregion
 
         private bool _isSelected;
+        private double _height;
+        private double _textBoxHeight;
 
         private MainWindow mainWindow;
         private DocumentControl dragControl;
@@ -64,12 +77,22 @@ namespace WpfAppTest.UserControls
                     this.GridBackground.Background = ColorHelper.BrushFromHEX("#5e9bff");
                     //this.GridBackground.Opacity = 0.5;
                     this.border.BorderBrush = Brushes.Blue;
+
+                    //_height = this.ActualHeight;
+                    //_textBoxHeight = this.TextBox_Filename.ActualHeight;
+
+                    //this.TextBox_Filename.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+                    //this.Height = double.NaN;
+                    //this.TextBox_Filename.Height = this.TextBox_Filename.DesiredSize.Height;
                 }
                 else
                 {
                     this.GridBackground.Background = Brushes.Transparent;
                     //this.GridBackground.Opacity = 1;
                     this.border.BorderBrush = Brushes.Transparent;
+
+                    //this.Height = _height;
+                    //this.TextBox_Filename.Height = _textBoxHeight;
                 }
             }
         }

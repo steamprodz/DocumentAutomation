@@ -55,6 +55,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -99,10 +102,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ColorHelper.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Employees.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PdfCreator.cs" />
+    <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="JobAssemblies.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
@@ -130,7 +135,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MouseHelper.cs" />
+    <Compile Include="Helpers\MouseHelper.cs" />
     <Compile Include="OrganizationContacts.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
@@ -203,6 +208,11 @@
       <DependentUpon>M1_FM_DEV_DataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="PDF\cover_page.pdf" />
+    <None Include="PDF\main_page.pdf" />
+    <None Include="PDF\submittal.pdf" />
+    <None Include="PDF\table_of_conents.pdf" />
+    <None Include="PDF\unit_specifications.pdf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -215,6 +225,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="PDF\params.txt" />
     <Resource Include="Icons\garbage.png" />
     <Resource Include="Icons\no_image.png" />
     <Content Include="M1_FM_DEV_Data.mdf">
