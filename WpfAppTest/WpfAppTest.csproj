@@ -62,6 +62,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -106,7 +107,7 @@
     <Compile Include="Employees.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\PdfCreator.cs" />
+    <Compile Include="Helpers\PdfDoc.cs" />
     <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="JobAssemblies.cs">
       <DependentUpon>M1_FM_DEV_DataModel.tt</DependentUpon>

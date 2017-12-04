@@ -222,5 +222,10 @@ namespace WpfAppTest
         {
 
         }
+
+        private void Button_ExportPDF_Click(object sender, RoutedEventArgs e)
+        {
+            PdfDoc pdfCreator = new PdfDoc(@"PDF/cover_page.pdf", @"output.pdf");
+        }
     }
 }
