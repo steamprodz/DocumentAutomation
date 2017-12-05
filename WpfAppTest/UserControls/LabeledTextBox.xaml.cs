@@ -50,7 +50,23 @@ namespace WpfAppTest.UserControls
         private static void TextBoxTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var labeledTextBox = (LabeledTextBox)d;
-            labeledTextBox.TextBox.Text = e.NewValue.ToString();
+            labeledTextBox.TextBox.Text = e.NewValue.ToString().Trim();
+        }
+
+        [Category("MyApp")]
+        public Double LabelWidth
+        {
+            get { return (Double)GetValue(LabelWidthProperty); }
+            set { SetValue(LabelWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty LabelWidthProperty =
+            DependencyProperty.Register("LabelWidth", typeof(Double), typeof(LabeledTextBox), new PropertyMetadata(Double.NaN, LabelWidthChanged));
+
+        private static void LabelWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var labeledTextBox = (LabeledTextBox)d;
+            labeledTextBox.Label.Width = (Double)e.NewValue;
         }
 
 

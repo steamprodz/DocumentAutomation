@@ -6,8 +6,12 @@
              xmlns:local="clr-namespace:WpfAppTest"
              mc:Ignorable="d" Height="26" MinHeight="26" MaxHeight="26.1" RenderTransformOrigin="0.5,0.5" Width="236.607">
     <Grid>
-        <Label x:Name="Label" Content="Label" VerticalAlignment="Top" Margin="0,0,150,0"/>
-        <TextBox x:Name="TextBox" Height="23" Margin="99,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AllowDrop="False"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Label" Content="Label" VerticalAlignment="Top" Height="26"/>
+        <TextBox x:Name="TextBox" Height="23" Margin="5,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AllowDrop="False" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

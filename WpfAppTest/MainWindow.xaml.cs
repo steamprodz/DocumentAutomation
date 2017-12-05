@@ -140,30 +140,30 @@ namespace WpfAppTest
 
         private void button_LoadFromDB_Click(object sender, RoutedEventArgs e)
         {
-            string employeeId = this.LabeledTextBox_CustomerId.TextBox.Text;
+            string custId = this.LabeledTextBox_CustomerId.TextBox.Text;
 
             using (var context = new M1_FM_DEV_DataEntities())
             {
-                var employee = context.Employees.Where(x => x.lmeEmployeeID == employeeId).FirstOrDefault();
+                var orgLocations = context.OrganizationLocations.Where(x => x.cmlOrganizationID == custId).FirstOrDefault();
 
-                if (employee != null)
-                {
-                    this.labeledTextBox_FirstName.TextBoxText = employee.lmeEmployeeName;
+                //if (orgLocations != null)
+                //{
+                //    this.labeledTextBox_CustomerName.TextBoxText = orgLocations.cmlName;
 
-                    // Enable controls
-                    this.labeledTextBox_FirstName.IsEnabled = true;
-                    this.labeledTextBox_SecondName.IsEnabled = true;
-                    this.labeledTextBox_BankAccount.IsEnabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Customer not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //    // Enable controls
+                //    this.labeledTextBox_CustomerName.IsEnabled = true;
+                //    this.labeledTextBox_SecondName.IsEnabled = true;
+                //    this.labeledTextBox_BankAccount.IsEnabled = true;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Customer not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    // Disable controls
-                    this.labeledTextBox_FirstName.IsEnabled = false;
-                    this.labeledTextBox_SecondName.IsEnabled = false;
-                    this.labeledTextBox_BankAccount.IsEnabled = false;
-                }
+                //    // Disable controls
+                //    this.labeledTextBox_CustomerName.IsEnabled = false;
+                //    this.labeledTextBox_SecondName.IsEnabled = false;
+                //    this.labeledTextBox_BankAccount.IsEnabled = false;
+                //}
             }
         }
 

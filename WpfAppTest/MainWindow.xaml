@@ -7,7 +7,7 @@
         xmlns:UserControls="clr-namespace:WpfAppTest.UserControls" x:Class="WpfAppTest.MainWindow"
         mc:Ignorable="d"
         Title="Document Automation" Height="768" Width="1024
-    " MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" MouseUp="Window_MouseUp">
+    " MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" MouseUp="Window_MouseUp" MinWidth="1024" MinHeight="768">
     <Window.Resources>
         <Style x:Key="DocumentControlStyle" TargetType="{x:Type UserControls:DocumentControl}">
             <Setter Property="Template">
@@ -22,28 +22,47 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="Grid_Main">
-        <GroupBox Header="Customer" Margin="10,10,668,457">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="418"/>
+            <RowDefinition Height="164*"/>
+            <RowDefinition Height="155*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="435*" MaxWidth="500"/>
+            <ColumnDefinition Width="581*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Customer" Margin="10,10,2,1">
             <Grid Margin="10,10,8,1">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type UserControls:LabeledTextBox}">
-                            <Setter Property="Margin" Value="0,0,0,0"/>
-                        </Style>
-                    </StackPanel.Resources>
-                    <UserControls:LabeledTextBox x:Name="LabeledTextBox_CustomerId" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Customer Id" TextBoxText="" Width="Auto" Margin="0,0,0,4"/>
-                    <UserControls:LabeledTextBox x:Name="labeledTextBox_FirstName" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="First Name" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
-                    <UserControls:LabeledTextBox x:Name="labeledTextBox_SecondName" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Second Name" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
-                    <UserControls:LabeledTextBox x:Name="labeledTextBox_BankAccount" Height="24" VerticalAlignment="Top" MaxHeight="30" LabelText="Bank Account" TextBoxText="" Width="Auto" Margin="0,0,0,4" IsEnabled="False"/>
-                </StackPanel>
-                <Button x:Name="button_LoadFromDB" Content="Load from DB" Margin="10,0,10,10" Click="button_LoadFromDB_Click" Height="22" VerticalAlignment="Bottom"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="214*"/>
+                    <ColumnDefinition Width="179*"/>
+                </Grid.ColumnDefinitions>
+                <UserControls:LabeledTextBox x:Name="LabeledTextBox_CustomerId" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Customer Id" TextBoxText="" Width="Auto" Grid.ColumnSpan="2" Margin="0,0,97,0" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_CompanyName" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Company" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,30,0,0" Grid.ColumnSpan="2" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_City
+                                             " Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="City" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,155,0,0" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_State" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="State" TextBoxText="" Width="Auto" IsEnabled="False" Margin="10,123,0,0" Grid.Column="1" LabelWidth="85"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Country" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Country" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,124,0,0" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_PostalCode" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Postal Code" TextBoxText="" Width="Auto" IsEnabled="False" Grid.Column="1" Margin="10,153,0,0" LabelWidth="85"/>
+                <Button x:Name="button_LoadFromDB" Content="Load from DB" Margin="0,3,0,0" Click="button_LoadFromDB_Click" Height="23" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Width="92"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Address1" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Address 1" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,186,0,0" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Address2" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Address 2" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,217,0,0" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Address3" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Address 3" TextBoxText="" Width="Auto" IsEnabled="False" Margin="10,217,0,0" LabelWidth="85" Grid.Column="1"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Phone" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Phone" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,248,0,0" Grid.ColumnSpan="2" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_Fax" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Fax" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,279,0,0" Grid.ColumnSpan="2" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_CompanyEmail" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Company Email" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,310,0,0" Grid.ColumnSpan="2" LabelWidth="94"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_CountryCode" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Country Code" TextBoxText="" Width="Auto" IsEnabled="False" Margin="10,186,0,0" LabelWidth="85" Grid.Column="1"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_FirstName" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="First Name" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,61,0,0" LabelWidth="94" Grid.ColumnSpan="2"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_LastName" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Last Name" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,92,0,0" LabelWidth="94" Grid.ColumnSpan="2"/>
+                <UserControls:LabeledTextBox x:Name="labeledTextBox_ContactEmail" Height="26" VerticalAlignment="Top" MaxHeight="30" LabelText="Contact Email" TextBoxText="" Width="Auto" IsEnabled="False" Margin="0,341,0,0" Grid.ColumnSpan="2" LabelWidth="94"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Unit" HorizontalAlignment="Left" Height="526" Margin="353,10,0,0" VerticalAlignment="Top" Width="653">
+        <GroupBox Header="Unit" Margin="3,10,10,0" Grid.Column="1" Grid.RowSpan="2">
             <Grid Margin="10,10,7.286,4">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="171*"/>
-                    <RowDefinition Height="297*"/>
-                    <RowDefinition Height="22*"/>
+                    <RowDefinition Height="171"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="22"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Height="166" VerticalAlignment="Top" Margin="0,0,-0.286,0">
                     <StackPanel.Resources>
@@ -69,35 +88,35 @@
                 <Button x:Name="Button_Delete" Content="Delete" HorizontalAlignment="Left" Margin="118,0,0,0" Grid.Row="2" Width="82" Click="Button_Delete_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Unit drawing" Margin="10,285,668,201">
-            <Grid Margin="0,10,-1,-3">
-                <Border HorizontalAlignment="Left" Height="202" Margin="115,10,0,0" VerticalAlignment="Top" Width="202" BorderThickness="1" BorderBrush="Black" >
+        <GroupBox Header="Unit drawing" Margin="10,4,2,0" Grid.Row="1">
+            <Grid Margin="0,0,-1,-3">
+                <Border Margin="115,10,10,10" BorderThickness="1" BorderBrush="Black" >
                     <Image Source="Icons/no_image.png" Width="128" Height="128" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
-                <Button x:Name="Button_LoadImage" Content="Load Image" Margin="10,46,231,62"/>
+                <Button x:Name="Button_LoadImage" Content="Load Image" Margin="10,0,0,0" HorizontalAlignment="Left" Width="86" Height="114" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Questions" HorizontalAlignment="Left" Height="186" Margin="10,541,0,0" VerticalAlignment="Top" Width="633">
+        <GroupBox Header="Questions" Margin="10,5,373,10" Grid.ColumnSpan="2" Grid.Row="2">
             <Grid Margin="0,0,-1.714,2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="311*"/>
-                    <ColumnDefinition Width="312*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Content="Include additional customer information" Margin="10,10,10,0" VerticalAlignment="Top" Height="15" Grid.ColumnSpan="2"/>
+                <CheckBox Content="Include additional customer information" Margin="10,10,10,0" VerticalAlignment="Top" Height="15"/>
                 <CheckBox Content="Question 1 ..." Margin="10,10,10,0" VerticalAlignment="Top" Height="15" Grid.Column="1"/>
-                <CheckBox x:Name="checkBox_CustomQuestion" Content="Custom question" Margin="10,71,10,0" VerticalAlignment="Top" Checked="checkBox_CustomQuestion_Checked" Unchecked="checkBox_CustomQuestion_Unchecked" Height="15" Grid.ColumnSpan="2"/>
-                <Border Margin="10,91,10,10" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Grid.ColumnSpan="2">
+                <CheckBox x:Name="checkBox_CustomQuestion" Content="Custom question" Margin="10,50,10,0" VerticalAlignment="Top" Checked="checkBox_CustomQuestion_Checked" Unchecked="checkBox_CustomQuestion_Unchecked" Height="15" Grid.ColumnSpan="2"/>
+                <Border Margin="10,70,10,10" BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Grid.ColumnSpan="2">
                     <TextBox x:Name="textBox_CustomQuestion" BorderThickness="0" TextWrapping="Wrap" AcceptsReturn="True" Text="Type question..." Margin="4" FontStyle="Italic" FontSize="11" Foreground="Gray" IsEnabled="False" GotFocus="textBox_CustomQuestion_GotFocus" LostFocus="textBox_CustomQuestion_LostFocus" GotKeyboardFocus="textBox_CustomQuestion_GotKeyboardFocus" LostKeyboardFocus="textBox_CustomQuestion_LostKeyboardFocus" TextChanged="textBox_CustomQuestion_TextChanged" AllowDrop="False"/>
                 </Border>
-                <CheckBox Content="Question 2 ..." Margin="10,39,10,0" VerticalAlignment="Top" Height="15" Grid.ColumnSpan="2"/>
-                <CheckBox Content="Question 3 ..." Margin="10,39,10,0" VerticalAlignment="Top" Height="15" Grid.Column="1"/>
+                <CheckBox Content="Question 2 ..." Margin="10,30,10,0" VerticalAlignment="Top" Height="15"/>
+                <CheckBox Content="Question 3 ..." Margin="10,30,10,0" VerticalAlignment="Top" Height="15" Grid.Column="1"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Finalize" HorizontalAlignment="Left" Height="186" Margin="648,541,0,0" VerticalAlignment="Top" Width="358">
+        <GroupBox Header="Finalize" Margin="0,5,10,10" Grid.Column="1" HorizontalAlignment="Right" Width="358" Grid.Row="2">
             <Grid Margin="0,0,-1,-3">
                 <Button x:Name="button_BrowseDir" Content="Browse" Margin="0,13,10,0" VerticalAlignment="Top" Height="23" VerticalContentAlignment="Center" HorizontalAlignment="Right" Width="71" Click="button_BrowseDir_Click"/>
                 <UserControls:LabeledTextBox Height="26" Margin="10,10,86,0" VerticalAlignment="Top" Width="Auto" LabelText="Export directory:" TextBoxText=""/>
-                <UserControls:LabeledTextBox Height="26" Margin="10,41,86,0" VerticalAlignment="Top" Width="Auto" LabelText="Export filename:" TextBoxText=""/>
+                <UserControls:LabeledTextBox Height="26" Margin="10,41,86,0" VerticalAlignment="Top" Width="Auto" LabelText="Export filename:" TextBoxText="" LabelWidth="97"/>
                 <Button x:Name="Button_ExportPdf" Content="Export Document" Margin="10,0,10,10" Height="31" VerticalAlignment="Bottom" Click="Button_ExportPDF_Click"/>
             </Grid>
         </GroupBox>
