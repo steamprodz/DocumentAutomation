@@ -37,6 +37,22 @@ namespace WpfAppTest.UserControls
             var labeledComboBox = (LabeledComboBox)d;
             labeledComboBox.CheckBox.Content = e.NewValue;
         }
+
+        [Category("MyApp")]
+        public Boolean Checked
+        {
+            get { return (Boolean)GetValue(CheckedProperty); }
+            set { SetValue(CheckedProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedProperty =
+            DependencyProperty.Register("Checked", typeof(Boolean), typeof(LabeledComboBox), new PropertyMetadata(false, CheckedChanged));
+
+        private static void CheckedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var labeledComboBox = (LabeledComboBox)d;
+            labeledComboBox.CheckBox.IsChecked = (Boolean?)e.NewValue;
+        }
         #endregion
 
         public Dictionary<int, String> Filepaths { get; private set; }

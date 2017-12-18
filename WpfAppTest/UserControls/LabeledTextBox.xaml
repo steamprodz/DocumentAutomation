@@ -11,7 +11,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label x:Name="Label" Content="Label" VerticalAlignment="Top" Height="26"/>
-        <TextBox x:Name="TextBox" Height="23" Margin="5,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" AllowDrop="False" Grid.Column="1"/>
+        <TextBox x:Name="TextBox" Height="23" Margin="5,3,0,0" Text="TextBox" VerticalAlignment="Top" AllowDrop="False" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

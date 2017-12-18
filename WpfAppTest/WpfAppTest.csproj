@@ -211,6 +211,7 @@
     <None Include="packages.config" />
     <None Include="PDF\cover_page.pdf" />
     <None Include="PDF\main_page.pdf" />
+    <None Include="PDF\Original\0004 SUBMITTAL REV 00 20171030.pdf" />
     <None Include="PDF\submittal.pdf" />
     <None Include="PDF\table_of_conents.pdf" />
     <None Include="PDF\unit_specifications.pdf" />

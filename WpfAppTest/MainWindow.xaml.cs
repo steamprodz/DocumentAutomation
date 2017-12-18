@@ -145,6 +145,24 @@ namespace WpfAppTest
             using (var context = new M1_FM_DEV_DataEntities())
             {
                 var orgLocations = context.OrganizationLocations.Where(x => x.cmlOrganizationID == custId).FirstOrDefault();
+                var orgContacts = context.OrganizationContacts.Where(x => x.cmcOrganizationID == custId).FirstOrDefault();
+
+                this.labeledTextBox_FirstName.TextBoxText = orgContacts.UCMCFIRST;
+                this.labeledTextBox_LastName.TextBoxText = orgContacts.UCMCLAST;
+                this.labeledTextBox_ContactEmail.TextBoxText = orgContacts.cmcEMailAddress;
+
+                this.labeledTextBox_CompanyName.TextBoxText = orgLocations.cmlName;
+                this.labeledTextBox_Country.TextBoxText = orgLocations.cmlCountry;
+                this.labeledTextBox_State.TextBoxText = orgLocations.cmlState;
+                this.labeledTextBox_City.TextBoxText = orgLocations.cmlCity;
+                this.labeledTextBox_PostalCode.TextBoxText = orgLocations.cmlPostCode;
+                this.labeledTextBox_CountryCode.TextBoxText = orgLocations.cmlCountryCode;
+                this.labeledTextBox_Address1.TextBoxText = orgLocations.cmlAddressLine1;
+                this.labeledTextBox_Address2.TextBoxText = orgLocations.cmlAddressLine2;
+                this.labeledTextBox_Address3.TextBoxText = orgLocations.cmlAddressLine3;
+                this.labeledTextBox_Phone.TextBoxText = orgLocations.cmlPhoneNumber;
+                this.labeledTextBox_Fax.TextBoxText = orgLocations.cmlFaxNumber;
+                this.labeledTextBox_CompanyEmail.TextBoxText = orgLocations.cmlEMailAddress;
 
                 //if (orgLocations != null)
                 //{
